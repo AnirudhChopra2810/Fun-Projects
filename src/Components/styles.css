@@ -1,0 +1,40 @@
+.Container {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute;
+  top: 150px;
+}
+
+.title {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 200px;
+  height: 80px;
+  color: white;
+}
+
+.primetitle {
+  position: absolute;
+  top: 310px;
+  left: 20px;
+  width: 200px;
+  height: 160px;
+  color: white;
+}
+
+.PrimeContainer {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  position: absolute;
+  top: 450px;
+}
+
+.frame {
+  padding: 10px;
+  border-radius: 25px;
+}
