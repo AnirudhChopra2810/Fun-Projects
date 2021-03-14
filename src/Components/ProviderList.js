@@ -3,7 +3,8 @@ import axios from 'axios';
 import './styles.css';
 import config from '../config';
 import netflixImage from '../assets/netflix.png';
-import primeImage from '../assets/prime.png';
+import primeImage from '../assets/prime.jpg';
+import Card from 'react-bootstrap/Card';
 
 const { YT_CHANNEL_IDS } = config;
 
@@ -40,19 +41,30 @@ const ProviderList = ({ apiKey, channelId }) => {
 				<img src={getImgByChannel(channelId)} className="title"></img>
 			</div>
 			<div className="Container">
-				{contentList.map((link, id) => {
-					return (
-						<iframe
-							className="frame"
-							width="200"
-							height="120"
-							frameBorder="0"
-							src={link}
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowFullScreen
-						></iframe>
-					);
-				})}
+				<div className="display">
+					{contentList.map((link, id) => {
+						return (
+							<Card
+								className="Card mx-2"
+								key={id}
+								style={{ width: '415px', height: '200px' }}
+							>
+								<Card.Body>
+									<iframe
+										key={id}
+										className="frame"
+										width="200"
+										height="120"
+										frameBorder="0"
+										src={link}
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowFullScreen
+									></iframe>
+								</Card.Body>
+							</Card>
+						);
+					})}
+				</div>
 			</div>
 		</div>
 	);
