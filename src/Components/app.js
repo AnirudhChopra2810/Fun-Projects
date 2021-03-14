@@ -1,14 +1,19 @@
-import { React, useState } from "react";
-import Netflix from "./netflix";
-import Prime from "./amazonPirime";
+import { React, useState } from 'react';
+import ProviderList from './ProviderList';
+import config from '../config';
+
+const { YT_CHANNEL_IDS, API_KEY } = config;
 
 const App = () => {
-  return (
-    <div>
-      <Netflix />
-      <Prime />
-    </div>
-  );
+	return (
+		<div>
+			<ProviderList channelId={YT_CHANNEL_IDS.NETFLIX} apiKey={API_KEY} />
+			<ProviderList
+				channelId={YT_CHANNEL_IDS.AMAZON_PRIME}
+				apiKey={API_KEY}
+			/>
+		</div>
+	);
 };
 
 export default App;
