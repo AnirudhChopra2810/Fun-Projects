@@ -8,12 +8,12 @@ const Navbar = () => {
 				name="video"
 				style={{
 					position: 'relative',
-					left: '620px',
-					top: '5px',
+					left: '760px',
+					top: '25px',
 					height: '40px'
 				}}
 			/>
-			<h1 style={{ position: 'relative', left: '510px' }}>
+			<h1 style={{ position: 'relative', left: '510px', bottom: '10px' }}>
 				Know your shows
 			</h1>
 		</Menu>

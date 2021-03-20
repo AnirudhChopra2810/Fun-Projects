@@ -43,13 +43,6 @@ const ProviderList = ({ apiKey, channelId }) => {
 	}, []);
 
 	const handleMouseEnter = (id, videoId) => {
-		const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`;
-		axios
-			.get(url)
-			.then((response) => {
-				setDescription(response.data.items[0].snippet.description);
-			})
-			.catch((error) => console.log(error));
 		setMouseHovering(id);
 	};
 
@@ -82,7 +75,11 @@ const ProviderList = ({ apiKey, channelId }) => {
 
 								{isMouseHovering === id && (
 									<div>
-										<Cards description={Description} />
+										<Cards
+											description={Description}
+											videoId={link.id.videoId}
+											key={apiKey}
+										/>
 									</div>
 								)}
 							</div>
@@ -93,18 +90,5 @@ const ProviderList = ({ apiKey, channelId }) => {
 		</div>
 	);
 };
-
-{
-	/* <iframe
-key={id}
-className="frame mx-2"
-width="200"
-height="120"
-frameBorder="0"
-src={link}
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-allowFullScreen
-></iframe> */
-}
 
 export default ProviderList;

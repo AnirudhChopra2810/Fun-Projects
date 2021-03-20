@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
+import config from '../config';
 import './styles.css';
+import axios from 'axios';
+
+const { API_KEY } = config;
 
 const Cards = (props) => {
 	const [open, setOpen] = React.useState(false);
-	console.log(props.children);
+	const [description, setDescription] = useState('');
+	console.log(props.key);
+
+	const getDescription = () => {
+		const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${props.videoId}&key=${API_KEY}`;
+		axios
+			.get(url)
+			.then((response) => {
+				setDescription(response.data.items[0].snippet.description);
+			})
+			.catch((error) => console.log(error));
+	};
+
 	return (
 		<Modal
 			style={{
@@ -20,7 +36,10 @@ const Cards = (props) => {
 			size="small"
 			trigger={
 				<div>
-					<i className="info circle icon "></i>
+					<i
+						className="info circle icon "
+						onClick={getDescription}
+					></i>
 					<div className="description">Description</div>
 				</div>
 			}
@@ -29,7 +48,18 @@ const Cards = (props) => {
 				<Icon name="archive" />
 				Description
 			</Header>
-			<Modal.Content>{props.description}</Modal.Content>
+
+			<iframe
+				className="frame mx-2"
+				width="420"
+				height="220"
+				frameBorder="0"
+				style={{ position: 'relative', left: '150px' }}
+				src={`https://www.youtube.com/embed/${props.videoId}`}
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+				allowFullScreen
+			></iframe>
+			<Modal.Content>{description}</Modal.Content>
 			<Modal.Actions>
 				<Button
 					basic
@@ -37,10 +67,7 @@ const Cards = (props) => {
 					inverted
 					onClick={() => setOpen(false)}
 				>
-					<Icon name="remove" /> No
-				</Button>
-				<Button color="green" inverted onClick={() => setOpen(false)}>
-					<Icon name="checkmark" /> Yes
+					<Icon name="remove" /> close
 				</Button>
 			</Modal.Actions>
 		</Modal>
