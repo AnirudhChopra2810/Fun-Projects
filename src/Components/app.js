@@ -2,12 +2,15 @@ import { React, useState } from 'react';
 import ProviderList from './ProviderList';
 import config from '../config';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css';
+import Navbar from './Navbar';
 
 const { YT_CHANNEL_IDS, API_KEY } = config;
 
 const App = () => {
 	return (
 		<div>
+			<Navbar />
 			<ProviderList channelId={YT_CHANNEL_IDS.NETFLIX} apiKey={API_KEY} />
 			<ProviderList
 				channelId={YT_CHANNEL_IDS.AMAZON_PRIME}

@@ -1,56 +1,59 @@
 .display {
 	display: flex;
-	width: 100%;
 	overflow-x: scroll;
-	padding: 20px;
+	padding: 30px;
+}
+
+.image:hover {
+	transform: scale(1.2);
+	width: 160px;
+	position: relative;
+	padding: 5px;
 }
 
 .Container {
 	position: relative;
 	top: 50px;
 }
-/* .Card {
-	width: 450px;
-} */
 
 .Container::-webkit-scrollbar {
 	overflow: hidden;
 }
-/* 
-.background {
-	background-color: bisque;
-	max-width: 100%;
-	max-height: 100%;
-} */
+
+.description {
+	display: none;
+}
+
+.info {
+	color: white;
+	position: relative;
+	bottom: 170px;
+	left: 140px;
+}
+
+.info:hover + .description {
+	display: block;
+	position: relative;
+	bottom: 220px;
+	color: white;
+	left: 110px;
+	width: 90px;
+	padding: 5px;
+	opacity: 0.3;
+	background-color: #475ae6;
+}
 
 .title {
 	position: relative;
 	top: 60px;
-	left: 20px;
+	left: 40px;
 	width: 220px;
-	height: 100px;
+	height: 50px;
 }
 
-/* .primetitle {
-  position: absolute;
-  top: 310px;
-  left: 20px;
-  width: 200px;
-  height: 160px;
-  color: white;
-}
-
-.PrimeContainer {
-  display: flex;
-  width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  position: absolute;
-  top: 450px;
-} */
-
-.frame {
+.image {
 	position: relative;
 	left: 5px;
-	border-radius: 25px;
+	width: 150px;
+	height: 170px;
 }
